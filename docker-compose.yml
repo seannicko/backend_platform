@@ -51,7 +51,3 @@ services:
 
 volumes:
   file-volume:
-
-networks:
-  front:
-    driver: bridge
