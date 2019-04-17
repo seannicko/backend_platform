@@ -31,5 +31,28 @@ services:
     - mongo
     env_file:
     - docker.env
+    volumes:
+      - file-volume:/temp
 
+  sftp-server:
+    build:
+      context: ./sftp
+      args:
+        SSH_MASTER_USER: ${SSH_MASTER_USER}
+        SSH_MASTER_PASS: ${SSH_MASTER_PASS}
+    hostname: server
+    ports:
+      - "2222:22"
+    volumes:
+      - file-volume:/uploads
+    env_file:
+      - docker.env
+
+  file-volume:
+    container_name: file-volume
+    volumes:
+      - ./Docker/AppConf:/var/www/conf
+
+volumes:
+  file-volume:
 
