@@ -38,15 +38,16 @@ services:
     build:
       context: ./sftp
       args:
-        SSH_MASTER_USER: ${SSH_MASTER_USER}
-        SSH_MASTER_PASS: ${SSH_MASTER_PASS}
+        SSH_MASTER_USER: master
+        SSH_MASTER_PASS: master
     hostname: server
     ports:
       - "2222:22"
     volumes:
       - file-volume:/uploads
-    env_file:
-      - docker.env
+    environment:
+      SSH_MASTER_USER: master
+      SSH_MASTER_PASS: master
 
 volumes:
   file-volume:
