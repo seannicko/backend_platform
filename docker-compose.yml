@@ -48,11 +48,9 @@ services:
     env_file:
       - docker.env
 
-  file-volume:
-    container_name: file-volume
-    volumes:
-      - ./Docker/AppConf:/var/www/conf
-
 volumes:
   file-volume:
 
+networks:
+  front:
+    driver: bridge
