@@ -35,9 +35,9 @@ services:
       MONGO_PASS: root
       MONGO_USER: root
       USERS: users
-      PYTHONPATH: ${PYTHONPATH}:/home
+      PYTHONPATH: /home
     volumes:
-      - file-volume:/temp
+      - file-volume:/home/temp
 
   sftp-server:
     build:
